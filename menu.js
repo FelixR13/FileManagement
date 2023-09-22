@@ -13,7 +13,8 @@ var stepOne = readlineSync.keyInSelect(stepOne, 'Was möchtest du tun?') + 1;
 switch (stepOne) {
     case 1:
         // Absender liste 
-        log(stepOne)
+        if (!fs.existsSync('./sender/list.json')) { log(chalk.redBright('Keine Absenderliste angelegt')); break }
+        console.log(JSON.parse(fs.readFileSync('./sender/list.json')))
         break;
     case 2:
         // Index anzeigen
