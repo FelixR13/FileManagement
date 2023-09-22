@@ -5,7 +5,7 @@ import startSort from './startSort.js'
 const log = console.log;
 
 
-var stepOne = ['Absender bearbeiten', 'Index anzeigen', 'Programm starten'];
+var stepOne = ['Absender bearbeiten', 'Index anzeigen', 'Sortieren starten'];
 
 var stepOne = readlineSync.keyInSelect(stepOne, 'Was möchtest du tun?') + 1;
 
