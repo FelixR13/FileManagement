@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.3.0",
+    "config": "^3.3.9",
     "filepix": "^1.0.9",
     "json2xls": "^0.1.2",
     "readline-sync": "^1.4.10",
