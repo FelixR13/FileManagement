@@ -7,7 +7,7 @@ import settings from './settings.js';
 const log = console.log;
 
 
-var mainMenu = ['Absender bearbeiten', 'Index anzeigen', 'Programm starten', 'Einstellungen bearbeiten'];
+var mainMenu = ['Absender bearbeiten', 'Index anzeigen', 'Sortieren starten', 'Einstellungen bearbeiten'];
 
 var mainMenu = readlineSync.keyInSelect(mainMenu, 'Was möchtest du tun?') + 1;
 
@@ -15,7 +15,8 @@ var mainMenu = readlineSync.keyInSelect(mainMenu, 'Was möchtest du tun?') + 1;
 switch (mainMenu) {
     case 1:
         // Absender liste 
-        log(mainMenu)
+        if (!fs.existsSync('./sender/list.json')) { log(chalk.redBright('Keine Absenderliste angelegt')); break }
+        console.log(JSON.parse(fs.readFileSync('./sender/list.json')))
         break;
     case 2:
         // Index anzeigen
