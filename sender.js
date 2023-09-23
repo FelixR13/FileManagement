@@ -18,17 +18,15 @@ export default function () {
         case 1:
             var newSender = readlineSync.question('Name oder Bezeichnung des Absenders\n');
             senderList[newSender] = newSender;
-            fs.writeFileSync('./sender/list.json', JSON.stringify(senderList));
             break;
         case 2:
             var senderName = readlineSync.question('Name des Absenders der gelöscht werden soll\n');
             delete senderList[senderName];
-            fs.writeFileSync('./sender/list.json', JSON.stringify(senderList));
             break;
         case 3:
             var senderName = readlineSync.question('Name des Absenders der aktualisiert werden soll\n');
             senderList[senderName] = readlineSync.question('Neuer Name des Absenders\n');
-            fs.writeFileSync('./sender/list.json', JSON.stringify(senderList));
             break;
     }
+    fs.writeFileSync('./sender/list.json', JSON.stringify(senderList));
 }
