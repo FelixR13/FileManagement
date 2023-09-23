@@ -1,10 +1,10 @@
 import chalk from 'chalk';
-import readlineSync from 'readline-sync';
-import fs from 'fs';
-import startSort from './startSort.js'
 import config from 'config';
-import settings from './settings.js';
+import fs from 'fs';
+import readlineSync from 'readline-sync';
 import sender from './sender.js';
+import settings from './settings.js';
+import startSort from './startSort.js';
 const log = console.log;
 
 

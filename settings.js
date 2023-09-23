@@ -1,10 +1,5 @@
-import Tesseract from 'tesseract.js';
-import fs from 'fs';
-import * as filepix from 'filepix';
-import { v4 as uuidv4 } from 'uuid';
-import json2xls from 'json2xls';
 import config from 'config';
-import path from 'path';
+import fs from 'fs';
 import readlineSync from 'readline-sync';
 
 export default function () {
