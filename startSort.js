@@ -4,6 +4,7 @@ import * as filepix from 'filepix';
 import { v4 as uuidv4 } from 'uuid';
 import json2xls from 'json2xls';
 import config from 'config';
+import path from 'path';
 
 
 
@@ -35,7 +36,7 @@ export default function startSort() {
                     console.log(fileOutputDir)
                     fs.existsSync(fileOutputDir) ? true : fs.mkdirSync(fileOutputDir)
                     filepix.img2PDF([inputDir + file], fileOutputDir + fileName + '.pdf').then(() => { fs.unlinkSync(inputDir + file) })
-                    indexJSON.push({ "Bezeichnung": fileName, "Text": text, "Ordner": fileOutputDir })
+                    indexJSON.push({ "Bezeichnung": fileName, "Text": text, "Ordner": path.resolve(fileOutputDir) })
                     fs.writeFileSync(outputDir + 'index.json', JSON.stringify(indexJSON))
                     break
                 }

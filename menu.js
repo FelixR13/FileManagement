@@ -2,18 +2,20 @@ import chalk from 'chalk';
 import readlineSync from 'readline-sync';
 import fs from 'fs';
 import startSort from './startSort.js'
+import config from 'config';
+import settings from './settings.js';
 const log = console.log;
 
 
-var stepOne = ['Absender bearbeiten', 'Index anzeigen', 'Programm starten'];
+var mainMenu = ['Absender bearbeiten', 'Index anzeigen', 'Programm starten', 'Einstellungen bearbeiten'];
 
-var stepOne = readlineSync.keyInSelect(stepOne, 'Was möchtest du tun?') + 1;
+var mainMenu = readlineSync.keyInSelect(mainMenu, 'Was möchtest du tun?') + 1;
 
 
-switch (stepOne) {
+switch (mainMenu) {
     case 1:
         // Absender liste 
-        log(stepOne)
+        log(mainMenu)
         break;
     case 2:
         // Index anzeigen
@@ -23,6 +25,11 @@ switch (stepOne) {
     case 3:
         //Programm starten
         startSort();
+        break;
+    case 4:
+        //Einstellungen bearbeiten
+        settings()
+        setTimeout(() => { console.log(config.get('Settings')) }, "500")
         break;
 }
 
