@@ -4,6 +4,7 @@ import fs from 'fs';
 import startSort from './startSort.js'
 import config from 'config';
 import settings from './settings.js';
+import sender from './sender.js';
 const log = console.log;
 
 
@@ -16,7 +17,7 @@ switch (mainMenu) {
     case 1:
         // Absender liste 
         if (!fs.existsSync('./sender/list.json')) { log(chalk.redBright('Keine Absenderliste angelegt')); break }
-        console.log(JSON.parse(fs.readFileSync('./sender/list.json')))
+        sender();
         break;
     case 2:
         // Index anzeigen
