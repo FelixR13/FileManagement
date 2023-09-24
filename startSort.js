@@ -14,9 +14,10 @@ export default function startSort() {
     const inputDir = settings.inputDir;
     const list = JSON.parse(fs.readFileSync('./sender/list.json', 'utf8'));
     const files = fs.readdirSync(inputDir);
+    const dateRegex = /(\d{1,2}\.\d{1,2}\.\d{2,4}|\d{1,2}\.\d{1,2}\.\d{1,4}|\d{1,2}\/\d{1,2}\/\d{2,4}|\d{1,2}\/\d{1,2}\/\d{1,4})/g;
 
     if (!fs.existsSync(outputDir + 'index.json')) {
-        fs.writeFileSync(outputDir + 'index.json', JSON.stringify([{ 'Bezeichnung': 'Bezeichnung', 'Text': 'Text', 'Ordner': 'Speicherort' }]));
+        fs.writeFileSync(outputDir + 'index.json', JSON.stringify([{ 'Datum': 'Datum', 'Bezeichnung': 'Bezeichnung', 'Text': 'Text', 'Ordner': 'Speicherort' }]));
     }
 
     const indexJSON = JSON.parse(fs.readFileSync(outputDir + 'index.json'))
@@ -27,16 +28,20 @@ export default function startSort() {
             'deu',
             'pdf'
         ).then(({ data: { text } }) => {
+
             let count = 0
+            const date = text.match(dateRegex);
+            console.log(date);
             for (let item in list) {
                 count++
-                let fileName = item + uuidv4();
+                let fileName = ""
+                date ? fileName = date[0] + item + uuidv4() : fileName = item + uuidv4();
                 if (text.match(item)) {
                     let fileOutputDir = outputDir + item + '/'
                     console.log(fileOutputDir)
                     fs.existsSync(fileOutputDir) ? true : fs.mkdirSync(fileOutputDir)
                     filepix.img2PDF([inputDir + file], fileOutputDir + fileName + '.pdf').then(() => { fs.unlinkSync(inputDir + file) })
-                    indexJSON.push({ "Bezeichnung": fileName, "Text": text, "Ordner": path.resolve(fileOutputDir) })
+                    indexJSON.push({ "Datum": date[0], "Bezeichnung": fileName, "Text": text, "Ordner": path.resolve(fileOutputDir) })
                     fs.writeFileSync(outputDir + 'index.json', JSON.stringify(indexJSON))
                     break
                 }
