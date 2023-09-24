@@ -8,28 +8,28 @@ import startSort from './startSort.js';
 const log = console.log;
 
 
-var mainMenu = ['Absender bearbeiten', 'Index anzeigen', 'Sortieren starten', 'Einstellungen bearbeiten'];
+var mainMenu = ['edit sender', 'show index', 'start sort ', 'edit settings'];
 
-var mainMenu = readlineSync.keyInSelect(mainMenu, 'Was möchtest du tun?') + 1;
+var mainMenu = readlineSync.keyInSelect(mainMenu, 'What do you want to do?') + 1;
 
 
 switch (mainMenu) {
     case 1:
-        // Absender liste 
-        if (!fs.existsSync('./sender/list.json')) { log(chalk.redBright('Keine Absenderliste angelegt')); break }
+        // edit sender
+        if (!fs.existsSync('./sender/list.json')) { log(chalk.redBright('sender-list not found')); break }
         sender();
         break;
     case 2:
-        // Index anzeigen
-        if (!fs.existsSync('./output/index.json')) { log(chalk.redBright('Kein index angelegt')); break }
+        // show index
+        if (!fs.existsSync('./output/index.json')) { log(chalk.redBright('index not found')); break }
         console.log(JSON.parse(fs.readFileSync('./output/index.json')))
         break;
     case 3:
-        //Programm starten
+        // start sort
         startSort();
         break;
     case 4:
-        //Einstellungen bearbeiten
+        // edit settings
         settings()
         setTimeout(() => { console.log(config.get('Settings')) }, "500")
         break;

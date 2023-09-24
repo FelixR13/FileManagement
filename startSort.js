@@ -17,7 +17,7 @@ export default function startSort() {
     const dateRegex = /(\d{1,2}\.\d{1,2}\.\d{2,4}|\d{1,2}\.\d{1,2}\.\d{1,4}|\d{1,2}\/\d{1,2}\/\d{2,4}|\d{1,2}\/\d{1,2}\/\d{1,4})/g;
 
     if (!fs.existsSync(outputDir + 'index.json')) {
-        fs.writeFileSync(outputDir + 'index.json', JSON.stringify([{ 'Datum': 'Datum', 'Bezeichnung': 'Bezeichnung', 'Text': 'Text', 'Ordner': 'Speicherort' }]));
+        fs.writeFileSync(outputDir + 'index.json', JSON.stringify([{ 'date': 'date', 'name': 'name', 'text': 'text', 'directory': 'directory' }]));
     }
 
     const indexJSON = JSON.parse(fs.readFileSync(outputDir + 'index.json'))
@@ -41,7 +41,7 @@ export default function startSort() {
                     console.log(fileOutputDir)
                     fs.existsSync(fileOutputDir) ? true : fs.mkdirSync(fileOutputDir)
                     filepix.img2PDF([inputDir + file], fileOutputDir + fileName + '.pdf').then(() => { fs.unlinkSync(inputDir + file) })
-                    indexJSON.push({ "Datum": date[0], "Bezeichnung": fileName, "Text": text, "Ordner": path.resolve(fileOutputDir) })
+                    indexJSON.push({ "date": date[0], "name": fileName, "text": text, "directory": path.resolve(fileOutputDir) })
                     fs.writeFileSync(outputDir + 'index.json', JSON.stringify(indexJSON))
                     break
                 }

@@ -1,1 +1,5 @@
-{"Vodafone":"Vodafone","IKK":"IKK","Handelskammer":"Handelskammer","Steuerkasse":"Steuerkasse","Eventim":"Eventim","WWK":"WWK"}
+{
+    "Sender1": "Sender1",
+    "Sender2": "Sender2",
+    "Sender3": "Sender3"
+}
