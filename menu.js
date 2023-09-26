@@ -8,32 +8,32 @@ import startSort from './startSort.js';
 const log = console.log;
 
 
+var showMenu = (process.env.MENU === 'true');
 var mainMenu = ['edit sender', 'show index', 'start sort ', 'edit settings'];
-
-var mainMenu = readlineSync.keyInSelect(mainMenu, 'What do you want to do?') + 1;
-
-
-switch (mainMenu) {
-    case 1:
-        // edit sender
-        if (!fs.existsSync('./sender/list.json')) { log(chalk.redBright('sender-list not found')); break }
-        sender();
-        break;
-    case 2:
-        // show index
-        if (!fs.existsSync('./output/index.json')) { log(chalk.redBright('index not found')); break }
-        console.log(JSON.parse(fs.readFileSync('./output/index.json')))
-        break;
-    case 3:
-        // start sort
-        startSort();
-        break;
-    case 4:
-        // edit settings
-        settings()
-        setTimeout(() => { console.log(config.get('Settings')) }, "1000")
-        break;
+if (showMenu) {
+    var mainMenu = readlineSync.keyInSelect(mainMenu, 'What do you want to do?') + 1;
+    switch (mainMenu) {
+        case 1:
+            // edit sender
+            if (!fs.existsSync('./sender/list.json')) { log(chalk.redBright('sender-list not found')); break }
+            sender();
+            break;
+        case 2:
+            // show index
+            if (!fs.existsSync('./output/index.json')) { log(chalk.redBright('index not found')); break }
+            console.log(JSON.parse(fs.readFileSync('./output/index.json')))
+            break;
+        case 3:
+            // start sort
+            startSort();
+            break;
+        case 4:
+            // edit settings
+            settings()
+            break;
+    }
+} else {
+    startSort();
 }
-
 
 

@@ -19,7 +19,7 @@ export default function () {
             fs.writeFileSync('./config/default.json', JSON.stringify(configData));
             break;
         case 3:
-            var newLanguage = readlineSync.question('new language (e.g. \'deu\')\n');
+            var newLanguage = readlineSync.question('new language (e.g. deu)\n');
             configData.Settings.lang = newLanguage;
             fs.writeFileSync('./config/default.json', JSON.stringify(configData));
             break;
@@ -30,5 +30,5 @@ export default function () {
             fs.writeFileSync('./config/default.json', JSON.stringify(configData));
             break;
     }
-
+    console.log(configData.Settings);
 }
