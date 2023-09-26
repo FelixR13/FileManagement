@@ -25,7 +25,7 @@ export default function startSort() {
     files.forEach(file => {
         Tesseract.recognize(
             inputDir + file,
-            'deu',
+            settings.lang,
             'pdf'
         ).then(({ data: { text } }) => {
 

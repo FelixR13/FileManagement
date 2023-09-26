@@ -31,7 +31,7 @@ switch (mainMenu) {
     case 4:
         // edit settings
         settings()
-        setTimeout(() => { console.log(config.get('Settings')) }, "500")
+        setTimeout(() => { console.log(config.get('Settings')) }, "1000")
         break;
 }
 
