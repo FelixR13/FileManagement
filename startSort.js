@@ -30,8 +30,8 @@ export default function startSort() {
         ).then(({ data: { text } }) => {
 
             let count = 0
-            const date = text.match(dateRegex);
-            console.log(date);
+            const date = text.match(dateRegex) ? text.match(dateRegex) : "_";
+            console.log("Dates: ", date);
             for (let item in list) {
                 count++
                 let fileName = ""
