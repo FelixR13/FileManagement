@@ -35,8 +35,8 @@ export default function startSort() {
             for (let item in list) {
                 count++
                 let fileName = ""
-                date ? fileName = date[0] + item + uuidv4() : fileName = item + uuidv4();
-                if (text.match(item)) {
+                date ? fileName = date[0] + item.toUpperCase() + uuidv4() : fileName = item.toUpperCase() + uuidv4();
+                if (text.toLowerCase().match(item.toLowerCase())) {
                     let fileOutputDir = outputDir + item + '/'
                     console.log(fileOutputDir)
                     fs.existsSync(fileOutputDir) ? true : fs.mkdirSync(fileOutputDir)
