@@ -1,8 +1,10 @@
 
 # Filemanagement
 
-A little programm to sort documents by there senders (via Keywords). Searches for the first Date formated in dd.mm.yyyy.
-Creates a excel dokument with folowing data: 
+A little programm to sort documents by there senders (via Keywords). 
+The first date formated in dd.mm.yyyy is used to name the file and for the
+excel-table.
+Creates a excel dokument with following data: 
 
 | date       | name              | text            | directory    |
 | ---------- | ----------------- | --------------- | ------------ |
@@ -16,7 +18,8 @@ Install docs-management with npm
 ```bash
   npm install docs-management
 ```
-    
+Add the senders to the list, with the menu or in the list.json
+
 ## Usage/Examples
 
 ```bash
