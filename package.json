@@ -1,6 +1,6 @@
 {
   "name": "docs-management",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "cross-env MENU=true menu.js",
   "scripts": {
@@ -20,5 +20,9 @@
     "readline-sync": "^1.4.10",
     "tesseract.js": "^4.1.2",
     "uuid": "^9.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelixR13/FileManagement"
   }
 }
