@@ -1,5 +1,5 @@
 
-# Filemanagement
+# docs-management
 
 A little programm to sort documents by there senders (via Keywords). 
 The first date formated in dd.mm.yyyy is used to name the file and for the
