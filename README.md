@@ -50,8 +50,6 @@ located in sender\list.json
 }`
 
 
-## 🦊 About Me
-I'm a junior developer who likes to make things easier. 
   
 ## Badges
 
